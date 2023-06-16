@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chef's Table | Sign in</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <link rel="icon" href="{% static 'image/1-removebg-preview.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/signup_in.css' %}">
+  <script src="/js/login.js"></script>
+</head>
+<body>
+    <div class="first-container">
+        <div class="center-container">
+            <div class="hichef"><h1 style="text-align : center;">Discover, Learn and Contribute as a Respected chef.</h1></div>
+            <form class="form" method="POST" action="signin">
+                <div class="small-con1">
+                    <input class="first"  type="text" placeholder="First Name" required>
+                    <input class="first"  type="text" placeholder="Last Name" required>
+                </div>
+                <input class="input" type="email" placeholder="Email" required>
+                <input class="input" type="text" placeholder="Username" required>
+                <input class="input" type="password" placeholder="Password" required>
+                <input class="input" type="password" placeholder="Confirmed Password" required>
+                <div class="outer_t_c">
+                     <p>By creating an account, you confirm that you are agree to Chef-Table <a style="color : #250AFF .">terms and condition.</a></p>
+                </div>
+                <button type="submit" id="login-button">Create an account</button>
+            </form>
+        </div>
+
+        <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+</body>
+</html>
