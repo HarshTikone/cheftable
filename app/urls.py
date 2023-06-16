@@ -8,3 +8,4 @@ urlpatterns = [
     path('post', views.post, name="post"),
     path('explore', views.explore, name="explore")
 ]
+

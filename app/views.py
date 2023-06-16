@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from rest_framework.response import Response
 from django.contrib.auth.models import User, auth
 from app.models import Profile
 from django.contrib import messages
@@ -38,10 +37,6 @@ def signup(request):
                 user = User.objects.create_user(username=username, password=password, email=email)
                 user.save()
 
-                serializer = ProfileSerializer(data=request.data)
-                if serializer.is_valid():
-                    serializer.save()
-                return redirect('signin')
 
         else:
             messages.info(request, "Password not matching")
