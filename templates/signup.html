@@ -1,6 +1,5 @@
 {% load static %}
 
-<!DOCTYPE html>
 <html>
 <head>
   <title>Chef's Table | Sign in</title>
@@ -14,15 +13,23 @@
     <div class="first-container">
         <div class="center-container">
             <div class="hichef"><h1 style="text-align : center;">Discover, Learn and Contribute as a Respected chef.</h1></div>
-            <form class="form" method="POST" action="signin">
+
+            <div class="message-div">
+                {% for message in messages %}
+                <h5 style="color : red; font-size : 1rem;">{{ message }}</h5>
+                {% endfor %}
+            </div>
+
+            <form class="form" method="POST">
+                {% csrf_token %}
                 <div class="small-con1">
-                    <input class="first"  type="text" placeholder="First Name" required>
-                    <input class="first"  type="text" placeholder="Last Name" required>
+                    <input class="first" name="firstname" type="text" placeholder="First Name" required>
+                    <input class="first" name="lastname" type="text" placeholder="Last Name" required>
                 </div>
-                <input class="input" type="email" placeholder="Email" required>
-                <input class="input" type="text" placeholder="Username" required>
-                <input class="input" type="password" placeholder="Password" required>
-                <input class="input" type="password" placeholder="Confirmed Password" required>
+                <input class="input" name="email" type="email" placeholder="Email" required>
+                <input class="input" name="username" type="text" placeholder="Username" required>
+                <input class="input" name="password" type="password" placeholder="Password" required>
+                <input class="input" name="password2" type="password" placeholder="Confirmed Password" required>
                 <div class="outer_t_c">
                      <p>By creating an account, you confirm that you are agree to Chef-Table <a style="color : #250AFF .">terms and condition.</a></p>
                 </div>

@@ -76,7 +76,6 @@ WSGI_APPLICATION = 'cheftable.wsgi.application'
 
 
 DATABASES = {
-
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'cheftabledb',

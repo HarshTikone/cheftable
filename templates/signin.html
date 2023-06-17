@@ -1,6 +1,5 @@
 {% load static%}
 
-<!DOCTYPE html>
 <html>
 <head>
   <title>Chef's Table | Sign in</title>
@@ -14,9 +13,15 @@
     <div class="first-container">
         <div class="center-container">
             <div class="hichef"><h1>Welcome Chef Sign in</h1></div>
-            <form class="form" action="">
-              <input class="input" type="text" placeholder="Username" required>
-              <input class="input" type="password" placeholder="Password" required>
+            <div class="message-div">
+                {% for message in messages %}
+                <h5 style="color : red; font-size : 1rem;">{{ message }}</h5>
+                {% endfor %}
+            </div>
+            <form class="form" method="POST" action="">
+              {% csrf_token %}
+              <input class="input" name="username" type="text" placeholder="Username" required>
+              <input class="input" name="password" type="password" placeholder="Password" required>
               <button type="submit" id="login-button">Login</button>
               <a class="join" href="signup">New to ChefTable ? Join now</a>
             </form>
