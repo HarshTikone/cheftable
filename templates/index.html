@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <link rel="icon" href="{% static 'image/iconlogo.png' %}" type="image/x-icon">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style01.css' %}">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 </head>
@@ -21,14 +21,13 @@
   <div class="main-navbar">
     <div class="navbar" id="myNavbar">
       <div class="logo">
-        <a href=""><span class="logo-text"><span class="first">Chef's</span> Table</span></a>
+        <span class="logo-text"><span class="first">Chef's</span> Table</span>
       </div>
       <div class="navbar-right">
 
-        <a class="nav-links active" href="/">Home</a>
+        <a class="nav-links active" href="">Home</a>
         <a class="nav-links" href="explore" >Explore</a>
         <a class="nav-links" href="signin">Post</a>
-
         <a href="signin" class="login-btn nav-links btn">Sign In</a>
       </div>
     </div>
@@ -42,7 +41,7 @@
     </div>
     <div class="carousel-content">
         <p class="headline" id="changing-text">A food lover's hub, exploring culinary delights.</p>
-        <button formaction="signin" class="getstarted">Get Started</button>
+        <a href="signin"><button class="getstarted">Get Started</button></a>
     </div>
     <div class="carousel-dots">
       <span class="dot"></span>
@@ -88,7 +87,7 @@
             <p>
               Share your favorite recipes with us at Chef's Table and be part of a vibrant culinary community. Let's inspire and delight food lovers around the world, one recipe at a time.
             </p>
-            <button class="Small-button"><a href="post">Share recipe</a></button>
+            <button class="Small-button"><a href="signin">Share recipe</a></button>
           </div>
         </div>
       </div>
@@ -175,7 +174,7 @@
     <div class="extra">
       <div class="row-l-2">
       <div class="bold-last-words"><h1>Be the <span class="FT">early adopter</span> and<br><span class="UC">contribute </span>to our website's growth and success!</h1></div>
-      <button class="last-getStarted"><a>Join us</a></button>
+      <a href="signin" style="text-decoration : none; color : #fff"><button class="last-getStarted">Join us</button></a>
     </div>
     </div>
   </div>

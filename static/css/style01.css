@@ -59,6 +59,7 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   align-items: center;
   cursor : pointer;
+  text-decoration : none;
 }
 #contact {
     margin-right : px;
@@ -68,6 +69,7 @@ body::-webkit-scrollbar-thumb {
   color:#333;
   margin-top : 5px;
   margin-left : 5px;
+  text-decoration : none;
 }
 .logo-text .first {
     margin : 0;
@@ -169,6 +171,14 @@ body::-webkit-scrollbar-thumb {
   text-decoration : none;
 }
 .dropdown-content a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content p {
   display: block;
   padding: 8px 12px;
   color: #333;
@@ -673,7 +683,6 @@ body::-webkit-scrollbar-thumb {
   background-color: #FFBB0B;
   text-align: center;
   cursor: pointer;
-  width: 30%;
   border-radius : 50px;
 }
 
