@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, auth
 from app.models import Profile
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth import logout
 # Create your views here.
 
 
-def index(request):
+def index_page(request):
     return render(request, 'index.html')
 
 
-def signin(request):
+
+def signin_page(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -20,7 +21,8 @@ def signin(request):
 
         if user is not None:
             login(request, user)
-            return redirect('homeprofile', user=user.username)  # Redirect to user's profile
+
+            return redirect('homeprofile', user.username)
         else:
             messages.info(request, 'Invalid Credentials')
             return redirect('signin')
@@ -28,7 +30,9 @@ def signin(request):
         return render(request, 'signin.html')
 
 
-def signup(request):
+
+
+def signup_page(request):
     if request.method == 'POST':
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
@@ -60,11 +64,9 @@ def signup(request):
                 user.set_password(password)
                 user.save()
 
-                user_model = User.objects.get(username=username)
-                new_profile = Profile(username=user_model, id_user=user_model, firstname=firstname, lastname=lastname,
-                                      email=email, password=password)
+                new_profile = Profile(user=user)
                 new_profile.save()
-            return redirect('home')
+            return redirect('signin')
         else:
             messages.info(request, "Password not matching")
             return redirect('signup')
@@ -72,16 +74,20 @@ def signup(request):
         return render(request, 'signup.html')
 
 
-def post(request):
+def post_page(request):
     return render(request, 'post.html')
 
 
-def explore(request):
+def explore_page(request):
     return render(request, 'explore.html')
 
 
-def homeprofile(request, username):
-    user = User.objects.get(username=username)
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.models import User
+
+def homeprofile_page(request, username):
+    user = get_object_or_404(User, username=username)
+    # Retrieve additional profile data or perform any necessary operations
     profile_data = user.profile
 
     context = {
@@ -90,3 +96,9 @@ def homeprofile(request, username):
     }
 
     return render(request, 'homeprofile.html', context)
+
+
+def logout_page(request, username):
+    logout(request)
+
+    return redirect('index')
