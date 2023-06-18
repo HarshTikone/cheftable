@@ -1,0 +1,212 @@
+{% load static %}
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Chef's Table: Learn,Discover,Share</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="icon" href="{% static 'image/iconlogo.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="main-navbar">
+    <div class="navbar" id="myNavbar">
+      <div class="logo">
+        <a href=""><span class="logo-text"><span class="first">Chef's</span> Table</span></a>
+      </div>
+      <div class="navbar-right">
+
+        <a class="nav-links active" href="/">Home</a>
+        <a class="nav-links" href="explore" >Explore</a>
+        <a class="nav-links" href="signin">Post</a>
+
+        <a href="signin" class="login-btn nav-links btn">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel">
+    <div class="carousel-images">
+      <img src="{% static 'image/pylyp-sukhenko-y-XZf_TNRms-unsplash.jpg' %}" alt="Image 1">
+      <img src="{% static 'image/lasse-bergqvist-ro3H4mJIArA-unsplash.jpg' %}" alt="Image 2">
+      <img src="{% static 'image/joanna-boj-MhOoD_h90ks-unsplash.jpg' %}" alt="Image 3">
+    </div>
+    <div class="carousel-content">
+        <p class="headline" id="changing-text">A food lover's hub, exploring culinary delights.</p>
+        <button formaction="signin" class="getstarted">Get Started</button>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+
+
+  <div class="three-box-section">
+    <div class="row-2">
+      <div class="big-box" style="border-right: none;">
+        <div class="big-desp-box">
+          <div class="img-div">
+            <img src="{% static 'image/noun-online-cooking-class-3683374.png' %}">
+          </div>
+          <h1>DISCOVER</h1>
+          <p>
+            Discover a culinary adventure at Chef's Table. Explore our curated recipes for appetizers, mains, desserts, and beverages. With detailed instructions and vibrant visuals, unleash your creativity in the kitchen. Catering to diverse palates and dietary preferences, our website is a haven for food enthusiasts. Elevate your dining experiences with our flavorful inspiration.
+          </p>
+          <button class="Big-button"><a href="explore">Take a tour</a></button>
+        </div>
+      </div>
+      <div class="big-box">
+        <div class="small-box">
+          <div class="desp-box">
+            <div class="img-div">
+              <img src="{% static 'image/noun-chef-518277.png' %}">
+            </div>
+            <h1>LEARN</h1>
+            <p>
+              Level up your culinary skills with Chef's Table book sessions. Explore, inspire, and create extraordinary dishes. Join us and ignite your passion for cooking.
+            </p>
+            <button class="Small-button"><a href="booking">Book Session</a></button>
+          </div>
+        </div>
+        <div class="small-box">
+          <div class="desp-box">
+            <div class="img-div">
+              <img src="{% static 'image/noun-share-food-4748004.png' %}">
+            </div>
+            <h1>SHARE</h1>
+            <p>
+              Share your favorite recipes with us at Chef's Table and be part of a vibrant culinary community. Let's inspire and delight food lovers around the world, one recipe at a time.
+            </p>
+            <button class="Small-button"><a href="post">Share recipe</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popular-section">
+    <div class="row-3">
+      <div class="row-3-1">
+        <div class="coln-1">
+          <h1>Our <span>Popular</span><br>Recipes</h1>
+        </div>
+        <div class="coln-2">
+          <p>Experience culinary excellence with our <br>handcrafted recipes that bring flavors to life.</p>
+        </div>
+      </div>
+      <div class="row-3-2">
+          <div class="bigSquare">
+            <div class="big-cir">
+              <div class="small-cir">
+                <img src="{% static 'image/kisspng-shahi-paneer-indian-cuisine-karahi-korma-vegetaria-samosa-5abf804a4a2a55.6310694015224996583038.png' %}">
+              </div>
+            </div>
+          </div>
+          <div class="bigSquare">
+            <div class="big-cir">
+              <div class="small-cir">
+                <img src="{% static 'image/kisspng-indian-cuisine-biryani-buffet-take-out-kebab-biryani-5ac54ba3bd1394.2905528615228793957745.png' %}">
+              </div>
+            </div>
+          </div>
+          <div class="bigSquare">
+            <div class="big-cir">
+              <div class="small-cir">
+                <img src="{% static 'image/Khaman-Gujarati-4ahjav.png' %}">
+              </div>
+            </div>
+          </div>
+          <div class="bigSquare">
+            <div class="big-cir">
+              <div class="small-cir">
+                <img src="{% static 'image/Food-Recipe-PNG.png' %}">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row-3-3">
+        <div class="colRow3">
+          <div class="row-3-3-1">
+            <p>Shahi Paneer</p>
+          </div>
+          <div class="row-3-3-2">
+            <p class="checkout">Check-Out</p>
+          </div>
+        </div>
+        <div class="colRow3">
+          <div class="row-3-3-1">
+            <p>Cuisine Biryani</p>
+          </div>
+          <div class="row-3-3-2">
+            <p class="checkout">Check-Out</p>
+          </div>
+        </div>
+        <div class="colRow3">
+          <div class="row-3-3-1">
+            <p >Khaman Dhokla</p>
+          </div>
+          <div class="row-3-3-2">
+            <p class="checkout">Check-Out</p>
+          </div>
+        </div>
+        <div class="colRow3">
+          <div class="row-3-3-1">
+            <p>Veg Cutlets</p>
+          </div>
+          <div class="row-3-3-2">
+            <p class="checkout">Check-Out</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="last-section" style="background-image: url('{% static 'image/240_F_265582946_D57tH8k6p377flQrhptz93w9bK9CN6AR.jpg' %}');">
+    <div class="extra">
+      <div class="row-l-2">
+      <div class="bold-last-words"><h1>Be the <span class="FT">early adopter</span> and<br><span class="UC">contribute </span>to our website's growth and success!</h1></div>
+      <button class="last-getStarted"><a>Join us</a></button>
+    </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-section">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="footer-logo-text">Chef's Table</span>
+          </div>
+          <div class="footer-links">
+            <a href="/">Home</a><br>
+            <a href="explore">Explore</a><br>
+            <a href="signin">Post</a><br>
+
+          </div>
+          <div class="footer-social">
+            <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'image/instagram-company.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'image/twitter.png' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'image/gmail.png' %}" alt="Twitter"></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Chef's Table. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+<script src="{% static 'js/script.js' %}">
+</script>
+</body>
+</html>
