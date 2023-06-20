@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Chef's Table: Learn,Discover,Share</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="icon" href="{% static 'image/iconlogo.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/explore2.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="main-navbar">
+    <div class="navbar" id="myNavbar">
+      <div class="logo">
+        <a href="index.html"><span class="logo-text"><span class="first">Chef's</span> Table</span></a>
+      </div>
+      <div class="navbar-right1">
+
+        <a class="nav-links" href="{% url 'homeprofile' username=request.user.username %}" class="active">Home</a>
+        <a class="nav-links" href="{% url 'explore1' username=request.user.username %}">Explore</a>
+        <a class="nav-links" href="{% url 'post1' username=request.user.username %}">Post</a>
+      </div>
+    </div>
+  </div>
+  <div class="dropdown">
+    <img src="{{ request.user.profile.profile_img.url }}" id="dropdown-img" alt="Profile Image">
+    <ul class="dropdown-content" id="dropdown-menu">
+      <li><p style="color : #333;">Welcome, {{ request.user.first_name }}</p></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="{% url 'logout' username=request.user.username %}">Logout</a></li>
+    </ul>
+  </div>
+  <div class="main-section">
+    <div class="row-1">
+      <div class="search-button-text-div">
+        <div class="search-button-text">
+          <h1>Search</h1>
+        </div>
+      </div>
+      <div class="search-button-div">
+        <div class="search-button">
+          <input type="text" placeholder="Search..." name="search">
+          <button type="submit">Search</button>
+        </div>
+      </div>
+      <div class="divide-section">
+        <div class="left-section">
+          <div class="inside-left">
+            <div class="long-col">
+              <div class="coln">
+                <img class="exp" src="{% static 'image/explore.png' %}">
+                <h1>Explore</h1>
+
+              </div>
+              <div class="coln">
+                <img class="collect" src="{% static 'image/collection logo.png' %}"><h1>Categories</h1>
+              </div>
+            </div>
+            <p>{{cat}}</p>
+          </div>
+        </div>
+
+        <div class="right-section">
+          <div class="r1">
+            <div class="row">
+              {% for post in posts %}
+              <div class="card">
+                <img src="{{ post.image.url }}" alt="Recipe Image">
+                <div class="card-body">
+                  <h5 class="card-title">{{ post.recipe_name }}</h5>
+                  <p class="card-text">{{ post.category }}</p>
+                  <a href="{% url 'recipe_details' username=request.user.username recipe_id=post.id %}" class="btn btn-primary">Check Recipe</a>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+  <footer>
+    <div class="footer-section">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="footer-logo-text">Chef's Table</span>
+          </div>
+          <div class="footer-links">
+            <a href="/">Home</a><br>
+            <a href="">Explore</a><br>
+            <a href="/post">Post</a><br>
+          </div>
+          <div class="footer-social">
+            <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'image/instagram-company.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'image/twitter.png' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'image/gmail.png' %}" alt="Twitter"></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Chef's Table. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
