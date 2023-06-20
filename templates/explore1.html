@@ -24,15 +24,21 @@
       <div class="logo">
         <a href="index.html"><span class="logo-text"><span class="first">Chef's</span> Table</span></a>
       </div>
-      <div class="navbar-right">
+      <div class="navbar-right1">
 
-        <a class="nav-links" href="/" class="active">Home</a>
-        <a class="nav-links" href="">Explore</a>
-        <a class="nav-links" href="/signin">Post</a>
-
-        <a href="/signin" class="login-btn nav-links btn">Sign In</a>
+        <a class="nav-links" href="{% url 'homeprofile' username=request.user.username %}" class="active">Home</a>
+        <a class="nav-links" href="{% url 'explore1' username=request.user.username %}">Explore</a>
+        <a class="nav-links" href="{% url 'post1' username=request.user.username %}">Post</a>
       </div>
     </div>
+  </div>
+  <div class="dropdown">
+    <img src="{{ request.user.profile.profile_img.url }}" id="dropdown-img" alt="Profile Image">
+    <ul class="dropdown-content" id="dropdown-menu">
+      <li><p style="color : #333;">Welcome, {{ request.user.first_name }}</p></li>
+      <li><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
+      <li><a href="{% url 'logout' username=request.user.username %}">Logout</a></li>
+    </ul>
   </div>
   <div class="main-section">
     <div class="row-1">
@@ -60,7 +66,9 @@
                 <img class="collect" src="{% static 'image/collection logo.png' %}"><h1>Categories</h1>
               </div>
             </div>
-            <p>{{cat}}</p>
+            {% for post in posts %}
+            <p class="card-text">{{ post.category }}</p>
+            {% endfor %}
           </div>
         </div>
 
@@ -83,6 +91,7 @@
       </div>
     </div>
   </div>
+
   <footer>
     <div class="footer-section">
       <div class="footer-container">

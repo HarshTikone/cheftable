@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Chef's Table: Learn,Discover,Share</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="icon" href="{% static 'image/iconlogo.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'css/post1.css' %}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main-navbar">
+        <div class="navbar" id="myNavbar">
+          <div class="logo">
+            <a href=""><span class="logo-text"><span class="first">Chef's</span> Table</span></a>
+          </div>
+          <div class="navbar-right1">
+
+            <a class="nav-links" href="{% url 'homeprofile' username=request.user.username %}" class="active">Home</a>
+            <a class="nav-links" href="{% url 'explore1' username=request.user.username %}">Explore</a>
+            <a class="nav-links" href="{% url 'post1' username=request.user.username %}">Post</a>
+          </div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <img src="{{ request.user.profile.profile_img.url }}" id="dropdown-img" alt="Profile Image">
+        <ul class="dropdown-content" id="dropdown-menu">
+            <li><p style="color : #333;">Welcome, {{ request.user.first_name }}</p></li>
+            <li><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
+            <li><a href="{% url 'logout' username=request.user.username %}">Logout</a></li>
+        </ul>
+    </div>
+    <div class="message-div">
+        {% for message in messages %}
+        <h5 style="color : red; font-size : 1rem;">{{ message }}</h5>
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="outer-card">
+            <form class="card-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="add-image" id="imgBox" style="background-image : url('{% static 'image/add-image-bg.jpg' %}');">
+                    <input type="file" accept="image/*" name="image" id="file" style="display : none" onchange="loadFile(event)">
+                    <label for="file" class="image-label"><img src="{% static 'image/plus-circle.png' %}"></label>
+                </div>
+                <div class="input">
+                    <input type="text" name="rec_name" class="input-field" required/>
+                    <label class="input-label">Recipe Name:</label>
+                </div>
+                <div class="input">
+                    <textarea class="input-field2" name="ingredient" rows="1" cols="50" wrap="physical" id="comment_text_area1" required></textarea>
+                    <label class="input-label">Ingredients:</label>
+                </div>
+                <div class="input">
+                    <textarea class="input-field1" name="steps" rows="1" cols="50" wrap="physical" id="comment_text_area2" required></textarea>
+                    <label class="input-label">Steps:</label>
+                </div>
+                <div class="input">
+                    <input type="number" name="avgTime" class="input-field" required/>
+                    <label class="input-label">Average time to cook/make:</label>
+                </div>
+                <div class="input">
+                    <input type="number" name="servings" class="input-field" required/>
+                    <label class="input-label">Servings:</label>
+                </div>
+                <div class="input">
+                    <input type="text" name="category" class="input-field" required/>
+                    <label class="input-label">Category:</label>
+                </div>
+                <div class="action">
+                    <button type="submit" class="action-button">POST</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <footer>
+    <div class="footer-section">
+      <div class="footer-container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="footer-logo-text">Chef's Table</span>
+          </div>
+          <div class="footer-links">
+            <a href="/">Home</a><br>
+            <a href="explore">Explore</a><br>
+            <a href="post">Post</a><br>
+
+          </div>
+          <div class="footer-social">
+            <a href="#"><img src="{% static 'image/facebook.png' %}" alt="Facebook"></a>
+            <a href="#"><img src="{% static 'image/instagram-company.png' %}" alt="Instagram"></a>
+            <a href="#"><img src="{% static 'image/twitter.png' %}" alt="Twitter"></a>
+            <a href="#"><img src="{% static 'image/gmail.png' %}" alt="Gmail"></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Chef's Table. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+    <script>
+        var imgBox = document.getElementById("imgBox")
+        var file = document.getElementById("file")
+        var loadFile = function(event){
+            imgBox.style.backgroundImage = "url(" +URL.createObjectURL(event.target.files[0 ])+ ")";
+            imgBox.style.backgroundSize = "contain";
+            imgBox.style.backgroundRepeat = "no-repeat";
+            imgBox.style.backgroundPosition = "center";
+        }
+    </script>
+</body>
+</html>

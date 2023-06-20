@@ -36,7 +36,7 @@
       <img src="{{ request.user.profile.profile_img.url }}" id="dropdown-img" alt="Profile Image">
       <ul class="dropdown-content" id="dropdown-menu">
         <li><p style="color : #333;">Welcome, {{ request.user.first_name }}</p></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
         <li><a href="{% url 'logout' username=request.user.username %}">Logout</a></li>
       </ul>
   </div>

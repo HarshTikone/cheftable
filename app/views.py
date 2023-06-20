@@ -85,24 +85,23 @@ def post_page_user(request, username):
     user = get_object_or_404(User, username=username)
 
     if request.method == 'POST':
-        rec_image = request.POST['image']
-        rec_name = request.POST['rec_name']
-        ingredient = request.POST['ingredient']
-        steps = request.POST['steps']
-        avgTime = request.POST['avgTime']
-        servings = request.POST['servings']
-        category = request.POST['category']
+            rec_image = request.FILES['image']
+            rec_name = request.POST['rec_name']
+            ingredient = request.POST['ingredient']
+            steps = request.POST['steps']
+            avgTime = request.POST['avgTime']
+            servings = request.POST['servings']
+            category = request.POST['category']
 
-        try:
-            new_profile = Post(user=user, recipe_name=rec_name, ingredients=ingredient, steps_to_make=steps,
-                               average_cooking_time=avgTime, servings=servings, category=category, image=rec_image)
-            new_profile.save()
-        except:
-            messages.info(request, "Post not Done")
-            return redirect('post1')
+            try:
+                new_profile = Post(user=user, recipe_name=rec_name, ingredients=ingredient, steps_to_make=steps,
+                                   average_cooking_time=avgTime, servings=servings, category=category, image=rec_image)
+                new_profile.save()
+            except:
+                messages.info(request, "Post not Done")
+                return redirect('post1')
 
-        messages.info(request, "Posted Successfully")
-        return redirect('explore1', username=username)  # Redirect to explore1 view with the username argument
+            return redirect('explore1', username=username)  # Redirect to explore1 view with the username argument
 
     else:
         profile_data = user.profile
@@ -116,7 +115,13 @@ def post_page_user(request, username):
 
 
 def explore_page(request):
-    return render(request, 'explore.html')
+    posts = Post.objects.all()
+
+    context = {
+        'posts': posts,
+    }
+
+    return render(request, 'explore.html', context)
 
 
 def explore_page_user(request, username):
@@ -159,3 +164,13 @@ def logout_page(request, username):
 
     return redirect('index')
 
+def profile(request, username):
+    user = request.user
+    profile_data = user.profile
+
+    context = {
+        'user': user,
+        'profile_data': profile_data,
+    }
+
+    return render(request, 'profile.html', context)
